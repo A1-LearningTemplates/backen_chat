@@ -15,7 +15,7 @@ const conversationRouter = require("./routes/conversation");
 app.use("/user", loginRouter);
 app.use("/message", messageRouter);
 app.use("/conversation", conversationRouter);
-app.get("*", function (req, res) {
+app.get("/", function (req, res) {
   // const protocol = req.protocol;
   // const host = req.hostname;
   // const url = req.originalUrl;
