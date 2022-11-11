@@ -29,15 +29,15 @@ app.use("/user", loginRouter);
 app.use("/message", messageRouter);
 app.use("/conversation", conversationRouter);
 app.get("*", function (req, res) {
-  const protocol = req.protocol;
-  const host = req.hostname;
-  const url = req.originalUrl;
-  const port = process.env.PORT || PORT;
+  // const protocol = req.protocol;
+  // const host = req.hostname;
+  // const url = req.originalUrl;
+  // const port = process.env.PORT || PORT;
 
-  const fullUrl = `${protocol}://${host}:${port}${url}`;
+  // const fullUrl = `${protocol}://${host}:${port}${url}`;
 
-  const responseString = `Full URL is: ${fullUrl}`;
-  res.send(responseString);
+  // const responseString = `Full URL is: ${fullUrl}`;
+  res.send("hello world");
 });
 const url = app.listen(PORT, () => {
   console.log(`App listening at port :${PORT}`);
