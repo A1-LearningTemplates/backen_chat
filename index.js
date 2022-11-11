@@ -24,7 +24,9 @@ mongoose.connect("mongodb://localhost:27017/Chat_app").then(
 app.use("/user", loginRouter);
 app.use("/message", messageRouter);
 app.use("/conversation", conversationRouter);
-
+app.get("/", (req, res) => {
+  res.send("Hello World");
+});
 server.listen(PORT, () => {
   console.log(`App listening at http://localhost:${PORT}`);
 });
