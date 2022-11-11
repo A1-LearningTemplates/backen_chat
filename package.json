@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "nodemon index.js",
     "start": "node index.js",
+    "socket": "node socket.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,7 +16,6 @@
     "cors": "^2.8.5",
     "express": "^4.18.1",
     "mongoose": "^6.4.0",
-    "socket.io": "^4.5.1",
-    "ws": "^8.7.0"
+    "socket.io": "^4.5.1"
   }
 }

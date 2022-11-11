@@ -6,7 +6,7 @@ app.use(express.json());
 app.use(cors());
 const PORT = 5000;
 // import the routers
-require("./socket");
+
 const loginRouter = require("./routes/login");
 const messageRouter = require("./routes/message");
 const conversationRouter = require("./routes/conversation");
