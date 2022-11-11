@@ -1,6 +1,5 @@
 const express = require("express");
 const cors = require("cors");
-const mongoose = require("mongoose");
 const app = express();
 app.use(express.json());
 app.use(cors());
@@ -11,18 +10,6 @@ const loginRouter = require("./routes/login");
 const messageRouter = require("./routes/message");
 const conversationRouter = require("./routes/conversation");
 
-mongoose
-  .connect(
-    "mongodb+srv://anas:RGOiW8sLqjQExuJJ@cluster0.zc8ky.mongodb.net/?retryWrites=true&w=majority"
-  )
-  .then(
-    () => {
-      console.log("database connected");
-    },
-    (err) => {
-      console.log(err);
-    }
-  );
 // endpoints Router
 
 app.use("/user", loginRouter);
@@ -42,4 +29,4 @@ app.get("*", function (req, res) {
 const url = app.listen(PORT, () => {
   console.log(`App listening at port :${PORT}`);
 });
-require("./socket");
+// require("./socket");
