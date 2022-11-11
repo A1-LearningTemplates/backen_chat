@@ -13,14 +13,18 @@ const loginRouter = require("./routes/login");
 const messageRouter = require("./routes/message");
 const conversationRouter = require("./routes/conversation");
 
-mongoose.connect("mongodb://localhost:27017/Chat_app").then(
-  () => {
-    console.log("database connected");
-  },
-  (err) => {
-    console.log(err);
-  }
-);
+mongoose
+  .connect(
+    "mongodb+srv://anas:RGOiW8sLqjQExuJJ@cluster0.zc8ky.mongodb.net/?retryWrites=true&w=majority"
+  )
+  .then(
+    () => {
+      console.log("database connected");
+    },
+    (err) => {
+      console.log(err);
+    }
+  );
 // endpoints Router
 app.use("/user", loginRouter);
 app.use("/message", messageRouter);
