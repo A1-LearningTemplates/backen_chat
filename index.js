@@ -42,3 +42,4 @@ app.get("*", function (req, res) {
 const url = app.listen(PORT, () => {
   console.log(`App listening at port :${PORT}`);
 });
+require("./socket");
