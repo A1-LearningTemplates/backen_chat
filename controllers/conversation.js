@@ -1,5 +1,4 @@
 conversationModle = require("../models/conversationSchema");
-
 const createConversation = async (req, res) => {
   const { userName, _id } = req.body;
   const newConv = conversationModle({ user_id: _id });
@@ -30,7 +29,7 @@ const createConversation = async (req, res) => {
   }
 };
 const updateConversation = async (req, res, next) => {
-  const { person, user_id, socket_ids } = req.body;
+  const { person, user_id } = req.body;
   try {
     const result = await conversationModle
       .findOneAndUpdate(
@@ -42,7 +41,7 @@ const updateConversation = async (req, res, next) => {
     await result.populate("user_id", "userName");
     await result.populate("persons.person", "userName");
     if (result) {
-      emitConv(socket_ids[1], result);
+      console.log(result);
       return res.status(201).json({
         success: true,
         message: "New conversation created",
@@ -58,12 +57,7 @@ const updateConversation = async (req, res, next) => {
     });
   }
 };
-const emitConv = (id, result) => {
-  const { chat } = require("../index");
-  chat.to(id).emit("conv", {
-    person: { person: result.user_id, socket: socket_ids[0] },
-  });
-};
+
 const getConversationById = async (req, res, next) => {
   const { user_id } = req.params;
   try {

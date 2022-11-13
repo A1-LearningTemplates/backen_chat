@@ -27,6 +27,5 @@ const io = socket(server, { cors: { origin: "*" } });
 const chat = io.of("/chat");
 
 module.exports = { chat };
-// require("./controllers/chat");
-require("./controllers/conversation");
+require("./controllers/chat");
 
