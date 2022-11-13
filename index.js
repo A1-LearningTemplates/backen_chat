@@ -1,12 +1,10 @@
 const express = require("express");
-const http = require("http");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const app = express();
 app.use(express.json());
 app.use(cors());
 const PORT = 5000;
-const server = http.createServer(app);
 // import the routers
 const loginRouter = require("./routes/login");
 const messageRouter = require("./routes/message");
@@ -27,7 +25,7 @@ app.use("/conversation", conversationRouter);
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
-server.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`App listening at http://localhost:${PORT}`);
 });
 require("./socket");
