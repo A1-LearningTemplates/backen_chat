@@ -24,7 +24,7 @@ server.listen(PORT, () => {
   console.log(`App listening on ${PORT}`);
 });
 const io = socket(server, {
-  cors: { origin: "https://client-chat-r8yuxwagz-codeup.vercel.app" },
+  cors: { origin: "*" },
 });
 const chat = io.of("/chat");
 
