@@ -21,11 +21,11 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 server.listen(PORT, () => {
-  console.log(`App listening at http://localhost:${PORT}`);
+  console.log(`App listening on ${PORT}`);
 });
-const io = socket(server, { cors: { origin: "*" } });
+const io = socket(server);
 const chat = io.of("/chat");
 
 module.exports = { chat };
 require("./controllers/chat");
-
+console.log(chat);
