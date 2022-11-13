@@ -23,9 +23,10 @@ app.get("/", (req, res) => {
 server.listen(PORT, () => {
   console.log(`App listening on ${PORT}`);
 });
-const io = socket(server);
+const io = socket(server, {
+  cors: { origin: "https://client-chat-r8yuxwagz-codeup.vercel.app" },
+});
 const chat = io.of("/chat");
 
 module.exports = { chat };
 require("./controllers/chat");
-console.log(chat);
