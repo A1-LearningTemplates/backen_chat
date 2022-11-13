@@ -1,9 +1,12 @@
 const express = require("express");
 const cors = require("cors");
+const http = require("http");
+const socket = require("socket.io");
 const app = express();
 app.use(express.json());
 app.use(cors());
 require("./models/db");
+const server = http.Server(app);
 const PORT = process.env.PORT || 5000;
 // import the routers
 const loginRouter = require("./routes/login");
@@ -17,7 +20,13 @@ app.use("/conversation", conversationRouter);
 app.get("/", (req, res) => {
   res.send("Hello World");
 });
-app.listen(PORT, () => {
+server.listen(PORT, () => {
   console.log(`App listening at http://localhost:${PORT}`);
 });
-require("./socket");
+const io = socket(server, { cors: { origin: "*" } });
+const chat = io.of("/chat");
+
+module.exports = { chat };
+// require("./controllers/chat");
+require("./controllers/conversation");
+
